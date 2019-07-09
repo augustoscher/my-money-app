@@ -12,6 +12,7 @@ import Row from '../common/layout/row'
 class Dashboard extends React.Component {
 
   componentWillMount() {
+    //dispara actionCreator, que faz a chamada via axios e retorna uma action para o reducer
     this.props.getSummary()
   }
 

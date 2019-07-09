@@ -1,0 +1,19 @@
+version: '3'
+services:
+  db:
+    container_name: my_money_mongodb
+    image: mongo:3.4
+    ports:
+      - 27017:27017
+
+  my_money_frontend:
+    container_name: my_money_frontend
+    image: node:11.1.0-alpine
+  
+  my_money_backend:
+    container_name: my_money_backend
+    image: node:11.1.0-alpine
+    ports:
+      - 3003:3003
+    depends_on:
+      - db
