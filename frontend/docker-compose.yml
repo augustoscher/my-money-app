@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  my_money_frontend:
+    container_name: my_money_frontend
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/app'
+      - '/app/node_modules'
+    ports:
+      - '8181:8080'
+    environment:
+      env_file: .env.local
+    command: npm run dev
+  

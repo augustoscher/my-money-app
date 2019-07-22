@@ -1,5 +1,9 @@
-FROM node:11.1.0-alpine 
+FROM node:10-alpine 
 
-WORKDIR /usr/app
-COPY package.json /usr/app/package.json
-RUN npm i -g
+WORKDIR /app
+
+ENV PATH /app/node_modules/.bin:$PATH
+
+COPY package.json /app/package.json
+
+RUN npm i
