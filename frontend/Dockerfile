@@ -1,9 +1,9 @@
-FROM node:10-alpine 
+FROM node:8.10.0
 
 WORKDIR /app
 
 ENV PATH /app/node_modules/.bin:$PATH
 
-COPY package.json /app/package.json
+COPY . /app
 
-RUN npm i
+RUN npm install
