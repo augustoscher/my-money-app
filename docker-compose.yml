@@ -8,11 +8,12 @@ services:
 
   my_money_frontend:
     container_name: my_money_frontend
-    image: node:11.1.0-alpine
+    image: node:8.10.0
+    copy: ./frontend
   
   my_money_backend:
     container_name: my_money_backend
-    image: node:11.1.0-alpine
+    image: node:8.10.0
     ports:
       - 3003:3003
     depends_on:
