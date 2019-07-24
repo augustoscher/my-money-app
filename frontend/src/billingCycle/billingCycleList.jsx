@@ -8,8 +8,9 @@ class BillingCycleList extends React.Component {
   componentWillMount() {
     this.props.getList();
   }
-
+  
   render() {
+    console.log(this.props.list)
     return (
       <div>
         <table className='table'>
@@ -30,7 +31,7 @@ class BillingCycleList extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  billingCycle: state.billingCycle
+  list: state.billingCycle.list
 });
 const mapDispatchToProps = dispatch => bindActionCreators({ getList }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(BillingCycleList)
