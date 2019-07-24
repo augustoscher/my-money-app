@@ -17,7 +17,6 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     const {credit, debt} = this.props.summary;
     return (
       <div>
