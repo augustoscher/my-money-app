@@ -1,20 +1,25 @@
 version: '3'
 services:
   db:
-    container_name: my_money_mongodb
+    container_name: mymoney_mongodb
     image: mongo:3.4
     ports:
       - 27017:27017
-
-  my_money_frontend:
-    container_name: my_money_frontend
+  backend:
+    container_name: mymoney_backend
     image: node:8.10.0
-    copy: ./frontend
-  
-  my_money_backend:
-    container_name: my_money_backend
-    image: node:8.10.0
+    volumes:
+      - ./backend:/backend
     ports:
       - 3003:3003
+    command: bash -c "cd /backend && npm i && npm run dev"
     depends_on:
       - db
+  frontend:
+    container_name: mymoney_frontend
+    image: node:8.10.0
+    volumes:
+      - ./frontend:/frontend
+    ports:
+      - 8080:8080
+    command: bash -c "cd /frontend && npm i && npm run dev"
