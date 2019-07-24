@@ -9,6 +9,7 @@ import TabsHeader from '../common/tab/tabsHeader'
 import TabsContent from '../common/tab/tabsContent'
 import TabHeader from '../common/tab/tabHeader'
 import TabContent from '../common/tab/tabContent'
+import List from './billingCycleList';
 
 import { selectTab, showTabs } from '../common/tab/tabActions'
 
@@ -32,7 +33,9 @@ class BillingCycle extends React.Component {
               <TabHeader label='Excluir' icon='trash' target='tabDelete'/>
             </TabsHeader>
             <TabsContent>
-              <TabContent id='tabList'><h1>List</h1></TabContent>
+              <TabContent id='tabList'>
+                <List />
+              </TabContent>
               <TabContent id='tabCreate'><h1>Create</h1></TabContent>
               <TabContent id='tabUpdate'><h1>Update</h1></TabContent>
               <TabContent id='tabDelete'><h1>Delete</h1></TabContent>
