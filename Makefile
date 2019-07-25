@@ -4,6 +4,8 @@
 help:
 	@echo "make run"
 	@echo "       starts the application"
+	@echo "make run-logs"
+	@echo "       starts the application with logs"
 	@echo "make stop"
 	@echo "       stops the application"
 	@echo "make rebuild"
@@ -14,6 +16,10 @@ help:
 	
 run: stop
 	docker-compose up -d
+	@echo "Application Running on 0.0.0.0:8080"
+
+run-logs: stop
+	docker-compose up -d && docker-compose logs -f -t
 	@echo "Application Running on 0.0.0.0:8080"
 
 stop:

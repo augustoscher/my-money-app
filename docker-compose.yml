@@ -3,8 +3,11 @@ services:
   db:
     container_name: mymoney_mongodb
     image: mongo:3.4
+    volumes:
+      - ./backend/data-volumes/mongodb:/data/db
     ports:
       - 27017:27017
+    command: bash -c "mongod && use mymoney"
   backend:
     container_name: mymoney_backend
     image: node:8.10.0
