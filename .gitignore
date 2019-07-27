@@ -1,0 +1,10 @@
+node_modules
+*.log
+
+# volume
+backend/data-volumes
+
+# production
+/build
+backend/package-lock.json
+frontend/package-lock.json

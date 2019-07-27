@@ -7,7 +7,7 @@ services:
       - ./backend/data-volumes/mongodb:/data/db
     ports:
       - 27017:27017
-    command: bash -c "mongod && use mymoney"
+    command: bash -c "mongod && mongo && use mymoney"
   backend:
     container_name: mymoney_backend
     image: node:8.10.0
