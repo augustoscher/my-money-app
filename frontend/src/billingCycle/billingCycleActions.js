@@ -1,5 +1,7 @@
 import axios from 'axios'
 import { toastr } from 'react-redux-toastr'
+import { reset as resetForm } from 'redux-form'
+import { showTabs, selectTab } from '../common/tab/tabActions'
 
 const BASE_URL = 'http://localhost:3003/api'
 
@@ -13,14 +15,22 @@ export const getList = () => {
 }
 
 export function create(values) {
-  axios.post(`${BASE_URL}/billingCycles`, values)
-    .then(resp => {
-      toastr.success('Sucesso', 'Operação realizada com sucesso.');
-    })
-    .catch(e => {
-      e.response.data.errors.forEach(error => toastr.error('Error', error))
-    })
-  return {
-    type: 'TEMP'
+  //usa o redux multi para retornar uma function que recebe dispatch
+  return dispatch => {
+    axios.post(`${BASE_URL}/billingCycles`, values)
+      .then(resp => {
+        toastr.success('Sucesso', 'Operação realizada com sucesso.');
+        //redux multi permite chamar dispatch passando um array
+        dispatch([
+          resetForm('billingCycleForm'),
+          getList(),
+          selectTab('tabList'),
+          showTabs('tabList', 'tabCreate')
+        ]);
+      })
+      .catch(e => {
+        e.response.data.errors.forEach(error => toastr.error('Error', error))
+      })
   }
+
 }
