@@ -38,13 +38,17 @@ class BillingCycle extends React.Component {
             </TabsHeader>
             <TabsContent>
               <TabContent id='tabList'>
-                <List />
+                <List  />
               </TabContent>
               <TabContent id='tabCreate'>
                 <Form onSubmit={this.props.create} />
               </TabContent>
-              <TabContent id='tabUpdate'><h1>Update</h1></TabContent>
-              <TabContent id='tabDelete'><h1>Delete</h1></TabContent>
+              <TabContent id='tabUpdate'>
+                <Form />
+              </TabContent>
+              <TabContent id='tabDelete'>
+                <h1>Delete</h1>
+              </TabContent>
             </TabsContent>
           </Tabs>
         </Content>
