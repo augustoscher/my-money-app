@@ -11,7 +11,7 @@ class BillingCycleForm extends React.Component {
 
   render() {
     //fica disponível em props pois esta sendo decorado com reduxForm()
-    const { handleSubmit, readOnly, credits } = this.props;
+    const { handleSubmit, readOnly, credits, debts } = this.props;
     return (
       <form role='form' onSubmit={handleSubmit}>
         <div className='box-body'>
@@ -43,8 +43,14 @@ class BillingCycleForm extends React.Component {
             list={credits} 
             readOnly={readOnly}
             field='credits' 
-            legend='Créditos'
-          />
+            legend='Créditos' />
+          <ItemtList 
+            cols='12 6'
+            list={debts} 
+            readOnly={readOnly}
+            field='debts' 
+            legend='Débitos'
+            showStatus={true} />
         </div>
         <div className='box-footer'>
           <button type='submit' className={`btn btn-${this.props.submitClass}`}>{this.props.submitLabel}</button>
@@ -60,7 +66,8 @@ BillingCycleForm = reduxForm({ form: 'billingCycleForm', destroyOnUnmount: false
 const selector = formValueSelector('billingCycleForm')
 
 const mapStateToProps = state => ({
-  credits: selector(state, 'credits')
+  credits: selector(state, 'credits'),
+  debts: selector(state, 'debts')
 });
 const mapDispatchToProps = dispatch => bindActionCreators({ init }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(BillingCycleForm);
