@@ -12,7 +12,7 @@ class Navbar extends React.Component {
     this.setState({ open: !this.state.open })
   }
   render() {
-    const { name, email } = this.props.user
+    const { name = '', email = '' } = this.props.user
     return (
       <div className="navbar-custom-menu">
         <ul className="nav navbar-nav">
