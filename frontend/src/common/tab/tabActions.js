@@ -1,18 +1,15 @@
-import axios from 'axios'
-const BASE_URL = 'http://localhost:3003/api'
-
-export const selectTab = (tabId) => {
-  return {
-    type: 'TAB_SELECTED',
-    payload: tabId
-  }
+export function selectTab(tabId) {
+    return {
+        type: 'TAB_SELECTED',
+        payload: tabId
+    }
 }
 
-export function showTabs(...tabsId) {
-  const tabsToShow = {}
-  tabsId.forEach(e => tabsToShow[e] = true);
-  return {
-    type: 'TAB_SHOWED',
-    payload: tabsToShow
-  }
+export function showTabs(...tabIds) {
+    const tabsToShow = {}
+    tabIds.forEach(e => tabsToShow[e] = true)
+    return {
+        type: 'TAB_SHOWED',
+        payload: tabsToShow
+    }
 }

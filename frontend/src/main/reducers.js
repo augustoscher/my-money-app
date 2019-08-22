@@ -1,20 +1,19 @@
 import { combineReducers } from 'redux'
-//importa reducer de redux-form com o alias de formReducer
-import { reducer as formReducer } from 'redux-form';
-import dashboardReducer from './dashboardReducer'
-import tabReducer from '../common/tab/tabReducer'
-import billingCycleReducer from '../billingCycle/billinCycleReducer';
+import { reducer as formReducer } from 'redux-form'
 import { reducer as toastrReducer } from 'react-redux-toastr'
-import authReducer from '../auth/authReducer';
 
+import DashboardReducer from '../dashboard/dashboardReducer'
+import TabReducer from '../common/tab/tabReducer'
+import BillingCycleReducer from '../billingCycle/billingCycleReducer'
+import AuthReducer from '../auth/authReducer'
 
 const rootReducer = combineReducers({
-  dashboard: dashboardReducer,
-  tab: tabReducer,
-  billingCycle: billingCycleReducer,
-  form: formReducer,
-  toastr: toastrReducer,
-  auth: authReducer 
+    dashboard: DashboardReducer,
+    tab: TabReducer,
+    billingCycle: BillingCycleReducer,
+    form: formReducer,
+    toastr: toastrReducer,
+    auth: AuthReducer
 })
 
 export default rootReducer
