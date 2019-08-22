@@ -2,42 +2,43 @@ import { toastr } from 'react-redux-toastr';
 import axios from 'axios';
 import consts from '../main/consts';
 
-export const login = (value) => {
-  return submit(values, `${consts.OAPI_URL}/login`);
+export function login(values) {
+  return submit(values, `${consts.OAPI_URL}/login`)
 }
 
-export const signup = (value) => {
-  return submit(values, `${consts.OAPI_URL}/signup`);
+export function signup(values) {
+  return submit(values, `${consts.OAPI_URL}/signup`)
 }
 
-export const logout = (value) => {
-  return { type: 'TOKEN_VALIDATED', payload: false }
+export function logout() {
+  return {type: 'TOKEN_VALIDATED', payload: false}
 }
 
-export const validateToken = (token) => {
+export function validateToken(token) {
   return dispatch => {
     if (token) {
       axios.post(`${consts.OAPI_URL}/validateToken`, { token })
         .then(resp => {
-          dispatch({ type: 'TOKEN_VALIDATED', payload: resp.data.valid });
+          dispatch({ type: 'TOKEN_VALIDATED', payload: resp.data.valid })
         })
-        .catch(e => dispatch({ type: 'TOKEN_VALIDATED', payload: false }));
+        .catch(e => dispatch({ type: 'TOKEN_VALIDATED', payload: false }))
     } else {
-      dispatch({ type: 'TOKEN_VALIDATED', payload: false });
+      dispatch({ type: 'TOKEN_VALIDATED', payload: false })
     }
   }
 }
 
-const submit = (values, url) => {
+function submit(values, url) {
   return dispatch => {
     axios.post(url, values)
       .then(resp => {
         dispatch([
           { type: 'USER_FETCHED', payload: resp.data }
-        ]);
+        ])
       })
       .catch(e => {
-        e.response.data.errors.forEach(error => toastr.error('Erro'. error));
-      });
+        e.response.data.errors.forEach(
+          error => toastr.error('Erro', error))
+      })
   }
 }

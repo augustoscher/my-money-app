@@ -15,16 +15,13 @@ class Auth extends Component {
     super(props)
     this.state = { loginMode: true }
   }
-  
   changeMode() {
     this.setState({ loginMode: !this.state.loginMode })
   }
-  
   onSubmit(values) {
     const { login, signup } = this.props
     this.state.loginMode ? login(values) : signup(values)
   }
-
   render() {
     const { loginMode } = this.state
     const { handleSubmit } = this.props
@@ -62,7 +59,6 @@ class Auth extends Component {
     )
   }
 }
-
 Auth = reduxForm({ form: 'authForm' })(Auth)
 const mapDispatchToProps = dispatch => bindActionCreators({ login, signup },
   dispatch)

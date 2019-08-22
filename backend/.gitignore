@@ -1,6 +1,5 @@
 node_modules
 *.log
-.env
 
 # production
 /build

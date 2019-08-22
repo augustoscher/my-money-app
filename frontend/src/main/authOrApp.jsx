@@ -1,5 +1,5 @@
-import React from 'react'
 import '../common/template/dependencies'
+import React, { Component } from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -8,7 +8,7 @@ import App from './app'
 import Auth from '../auth/auth'
 import { validateToken } from '../auth/authActions'
 
-class AuthOrApp extends React.Component {
+class AuthOrApp extends Component {
   componentWillMount() {
     if (this.props.auth.user) {
       this.props.validateToken(this.props.auth.user.token)
